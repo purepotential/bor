@@ -19,6 +19,7 @@ MEMGRAPH_PORT = int(MEMGRAPH_PORT)
 CHROMA_DATA_DIR = os.environ.get("CHROMA_DATA_DIR")
 CHROMA_VECTOR_SPACE = os.environ.get("CHROMA_VECTOR_SPACE")
 
+EMBEDDING_PROVIDER = os.environ.get("EMBEDDING_PROVIDER", "openai")
 EMBEDDING_MODEL_NAME = os.environ.get(
     "EMBEDDING_MODEL_NAME", "text-embedding-ada-002")
 LLM_MODEL_NAME = os.environ.get("LLM_MODEL_NAME", "gpt-4")
