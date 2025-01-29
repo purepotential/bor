@@ -7,6 +7,10 @@ if not f:
 dotenv.load_dotenv(f)
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+JINA_API_KEY = os.environ.get("JINA_API_KEY")
+JINA_API_URL = "https://api.jina.ai/v1/embeddings"
+JINA_MODEL_NAME = "jina-clip-v2"
+JINA_DIMENSIONS = 1024
 
 MEMGRAPH_HOST = os.environ.get("MEMGRAPH_HOST", "127.0.0.1")
 MEMGRAPH_PORT = os.environ.get("MEMGRAPH_PORT", "7687")
