@@ -5,6 +5,7 @@ import os
 
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
+from core.knowledgebase.OpenRouterLLM import OpenRouterLLM
 from langchain.schema import (
     HumanMessage,
     SystemMessage
@@ -16,11 +17,17 @@ from core.knowledgebase import constants
 class TextAnalizer:
     def __init__(self: TextAnalizer) -> None:
 
-        self.model = ChatOpenAI(
-            openai_api_key=constants.OPENAI_API_KEY,
-            temperature=constants.LLM_MODEL_TEMPERATURE,
-            model_name=constants.LLM_MODEL_NAME
-        )
+        if constants.LLM_PROVIDER == "openrouter":
+            self.model = OpenRouterLLM(
+                temperature=constants.LLM_MODEL_TEMPERATURE,
+                model_name=constants.LLM_MODEL_NAME
+            )
+        else:
+            self.model = ChatOpenAI(
+                openai_api_key=constants.OPENAI_API_KEY,
+                temperature=constants.LLM_MODEL_TEMPERATURE,
+                model_name=constants.LLM_MODEL_NAME
+            )
 
         self.prompt_names = [
             'prompt_generate', 'system_message_generate',
